@@ -1,0 +1,29 @@
+{
+  "name": "basicmathfunc",
+  "version": "0.1.0",
+  "scripts": {
+    "clean": "bsb -clean-world",
+    "build": "bsb -make-world",
+    "watch": "bsb -make-world -w",
+    "test": "./node_modules/mocha/bin/mocha",
+    "compile": "./compile.sh",
+    "compress": "uglifyjs index.js --compress -o index.js",
+    "docs": "jsdoc --readme /Users/jo/Desktop/libraries/starbucksfunc/README.md /Users/jo/Desktop/libraries/starbucksfunc/index.js"
+  },
+  "keywords": [
+    "BuckleScript"
+  ],
+  "author": "Joseph Sungpil Choi",
+  "license": "ISC",
+  "devDependencies": {
+    "assert": "^1.4.1",
+    "bs-platform": "^3.1.4",
+    "mocha": "^5.2.0"
+  },
+  "description": "A set of library functions for a math tutorial site",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "dependencies": {}
+}
