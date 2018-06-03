@@ -35,3 +35,13 @@ let areaTriangle base height =
     let safeBase = if base < 0.0 then 0.0 else base in
     let safeHeight = if height < 0.0 then 0.0 else height in
     0.5 *. safeBase *. safeHeight;;
+
+let removeNegatives values =
+    Array.map (fun x -> if x < 0.0 then 0.0 else x) values;;
+
+let removePositives values =
+    Array.map (fun x -> if x > 0.0 then 0.0 else x) values;;
+
+let surfaceAreaSphere radius =
+    let safeRadius = if radius < 0.0 then 0.0 else radius in
+    4.0 *. pi *. safeRadius *. safeRadius;;

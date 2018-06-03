@@ -8,8 +8,8 @@ M.describe('Math', function () {
         M.it('should correctly give the area of a circle', function () {
             A.equal(T.areaCircle(0), 0.0);
             A.equal(T.areaCircle(-120), 0.0);
-            A.equal(Math.round(T.areaCircle(10) * 1000) / 1000, 314.159);
-            A.equal(Math.round(T.areaCircle(123) * 1000) / 1000, 47529.155);
+            A.equal(Math.round(T.areaCircle(10) * 1000.0) / 1000.0, 314.159);
+            A.equal(Math.round(T.areaCircle(123) * 1000.0) / 1000.0, 47529.155);
         });
     });
     M.describe('#areaParallelogram', function () {
@@ -52,6 +52,40 @@ M.describe('Math', function () {
             A.equal(T.areaTriangle(-100, 100), 0.0);
             A.equal(T.areaTriangle(1, 2), 1.0);
             A.equal(T.areaTriangle(9, 3), 13.5);
+        });
+    });
+    M.describe('#removeNegatives', function () {
+        M.it('should correctly replace all negative values with 0', function () {
+            var result = T.removeNegatives([-3, -2, -1, 0, 1, 2, 3]);
+            A.equal(result.length, 7);
+            A.equal(result[0], 0.0);
+            A.equal(result[1], 0.0);
+            A.equal(result[2], 0.0);
+            A.equal(result[3], 0.0);
+            A.equal(result[4], 1.0);
+            A.equal(result[5], 2.0);
+            A.equal(result[6], 3.0);
+        });
+    });
+    M.describe('#removePositives', function () {
+        M.it('should correctly replace all negative values with 0', function () {
+            var result = T.removePositives([-3.0, -2.0, -1.0, 0.0, 1.0, 2.0, 3.0]);
+            A.equal(result.length, 7);
+            A.equal(result[0], -3.0);
+            A.equal(result[1], -2.0);
+            A.equal(result[2], -1.0);
+            A.equal(result[3], 0.0);
+            A.equal(result[4], 0.0);
+            A.equal(result[5], 0.0);
+            A.equal(result[6], 0.0);
+        });
+    });
+    M.describe('#surfaceAreaSphere', function () {
+        M.it('should correctly give you the surface area of a sphere', function () {
+            A.equal(T.surfaceAreaSphere(0), 0.0);
+            A.equal(T.surfaceAreaSphere(-1000), 0.0);
+            A.equal(Math.round(T.surfaceAreaSphere(10) * 1000.0) / 1000.0, 1256.637);
+            A.equal(Math.round(T.surfaceAreaSphere(23) * 1000.0) / 1000.0, 6647.610);
         });
     });
 });
