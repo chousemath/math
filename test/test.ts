@@ -56,27 +56,19 @@ M.describe('Math', () => {
   M.describe('#removeNegatives', () => {
     M.it('should correctly replace all negative values with 0', () => {
       const result: Array<number> = T.removeNegatives([-3, -2, -1, 0, 1, 2, 3]);
-      A.equal(result.length, 7);
-      A.equal(result[0], 0.0);
-      A.equal(result[1], 0.0);
-      A.equal(result[2], 0.0);
-      A.equal(result[3], 0.0);
-      A.equal(result[4], 1.0);
-      A.equal(result[5], 2.0);
-      A.equal(result[6], 3.0);
+      A.equal(result.length, 3);
+      A.equal(result[0], 1.0);
+      A.equal(result[1], 2.0);
+      A.equal(result[2], 3.0);
     });
   });
   M.describe('#removePositives', () => {
     M.it('should correctly replace all negative values with 0', () => {
       const result: Array<number> = T.removePositives([-3.0, -2.0, -1.0, 0.0, 1.0, 2.0, 3.0]);
-      A.equal(result.length, 7);
+      A.equal(result.length, 3);
       A.equal(result[0], -3.0);
       A.equal(result[1], -2.0);
       A.equal(result[2], -1.0);
-      A.equal(result[3], 0.0);
-      A.equal(result[4], 0.0);
-      A.equal(result[5], 0.0);
-      A.equal(result[6], 0.0);
     });
   });
   M.describe('#surfaceAreaSphere', () => {

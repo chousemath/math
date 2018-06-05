@@ -37,10 +37,10 @@ let areaTriangle base height =
     0.5 *. safeBase *. safeHeight;;
 
 let removeNegatives values =
-    Array.map (fun x -> if x < 0.0 then 0.0 else x) values;;
+    Js.Array.filter (fun x -> x > 0.0) values;;
 
 let removePositives values =
-    Array.map (fun x -> if x > 0.0 then 0.0 else x) values;;
+    Js.Array.filter (fun x -> x < 0.0) values;;
 
 let surfaceAreaSphere radius =
     let safeRadius = if radius < 0.0 then 0.0 else radius in
