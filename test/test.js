@@ -72,6 +72,22 @@ M.describe('Math', function () {
             A.equal(result[2], -1.0);
         });
     });
+    M.describe('#surfaceAreaCube', function () {
+        M.it('should correctly give you the surface area of a cube', function () {
+            A.equal(T.surfaceAreaCube(0), 0.0);
+            A.equal(T.surfaceAreaCube(-1000), 0.0);
+            A.equal(T.surfaceAreaCube(10), 600.0);
+            A.equal(T.surfaceAreaCube(23), 3174.0);
+        });
+    });
+    M.describe('#surfaceAreaCylinder', function () {
+        M.it('should correctly give you the surface area of a cylinder', function () {
+            A.equal(T.surfaceAreaCylinder(0, 0), 0.0);
+            A.equal(T.surfaceAreaCylinder(-1000, 100), 0.0);
+            A.equal(Math.round(T.surfaceAreaCylinder(2, 5) * 1000.0) / 1000.0, 62.832);
+            A.equal(Math.round(T.surfaceAreaCylinder(12.12, 22.33) * 1000.0) / 1000.0, 1700.479);
+        });
+    });
     M.describe('#surfaceAreaSphere', function () {
         M.it('should correctly give you the surface area of a sphere', function () {
             A.equal(T.surfaceAreaSphere(0), 0.0);

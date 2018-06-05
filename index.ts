@@ -10,4 +10,6 @@ export const areaTriangle = M.areaTriangle;
 export const removeNegatives = M.removeNegatives;
 export const removePositives = M.removePositives;
 
+export const surfaceAreaCube = M.surfaceAreaCube;
+export const surfaceAreaCylinder = M.surfaceAreaCylinder;
 export const surfaceAreaSphere = M.surfaceAreaSphere;

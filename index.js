@@ -9,4 +9,6 @@ exports.areaTrapezoid = M.areaTrapezoid;
 exports.areaTriangle = M.areaTriangle;
 exports.removeNegatives = M.removeNegatives;
 exports.removePositives = M.removePositives;
+exports.surfaceAreaCube = M.surfaceAreaCube;
+exports.surfaceAreaCylinder = M.surfaceAreaCylinder;
 exports.surfaceAreaSphere = M.surfaceAreaSphere;

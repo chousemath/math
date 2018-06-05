@@ -4,32 +4,40 @@
 
 var pi = 4.0 * Math.atan(1.0);
 
+function safeValue(value) {
+  if (value < 0.0) {
+    return 0.0;
+  } else {
+    return value;
+  }
+}
+
 function areaCircle(radius) {
-  var safeRadius = radius < 0.0 ? 0.0 : radius;
+  var safeRadius = safeValue(radius);
   return pi * safeRadius * safeRadius;
 }
 
 function areaParallelogram(base, height) {
-  var safeBase = base < 0.0 ? 0.0 : base;
-  var safeHeight = height < 0.0 ? 0.0 : height;
+  var safeBase = safeValue(base);
+  var safeHeight = safeValue(height);
   return safeBase * safeHeight;
 }
 
 function areaRectangle(length, width) {
-  var safeLength = length < 0.0 ? 0.0 : length;
-  var safeWidth = width < 0.0 ? 0.0 : width;
+  var safeLength = safeValue(length);
+  var safeWidth = safeValue(width);
   return safeLength * safeWidth;
 }
 
 function areaSquare(side) {
-  var safeSide = side < 0.0 ? 0.0 : side;
+  var safeSide = safeValue(side);
   return safeSide * safeSide;
 }
 
 function areaTrapezoid(base1, base2, height) {
-  var safeBase1 = base1 < 0.0 ? 0.0 : base1;
-  var safeBase2 = base2 < 0.0 ? 0.0 : base2;
-  var safeHeight = height < 0.0 ? 0.0 : height;
+  var safeBase1 = safeValue(base1);
+  var safeBase2 = safeValue(base2);
+  var safeHeight = safeValue(height);
   var match = safeBase1 * safeBase2 * safeHeight;
   if (match !== 0.0) {
     return 0.5 * (safeBase1 + safeBase2) * safeHeight;
@@ -39,8 +47,8 @@ function areaTrapezoid(base1, base2, height) {
 }
 
 function areaTriangle(base, height) {
-  var safeBase = base < 0.0 ? 0.0 : base;
-  var safeHeight = height < 0.0 ? 0.0 : height;
+  var safeBase = safeValue(base);
+  var safeHeight = safeValue(height);
   return 0.5 * safeBase * safeHeight;
 }
 
@@ -56,12 +64,24 @@ function removePositives(values) {
               }));
 }
 
+function surfaceAreaCube(side) {
+  var safeSide = safeValue(side);
+  return 6.0 * safeSide * safeSide;
+}
+
+function surfaceAreaCylinder(radius, height) {
+  var safeRadius = safeValue(radius);
+  var safeHeight = safeValue(height);
+  return 2.0 * pi * safeRadius * safeHeight;
+}
+
 function surfaceAreaSphere(radius) {
-  var safeRadius = radius < 0.0 ? 0.0 : radius;
+  var safeRadius = safeValue(radius);
   return 4.0 * pi * safeRadius * safeRadius;
 }
 
 exports.pi = pi;
+exports.safeValue = safeValue;
 exports.areaCircle = areaCircle;
 exports.areaParallelogram = areaParallelogram;
 exports.areaRectangle = areaRectangle;
@@ -70,5 +90,7 @@ exports.areaTrapezoid = areaTrapezoid;
 exports.areaTriangle = areaTriangle;
 exports.removeNegatives = removeNegatives;
 exports.removePositives = removePositives;
+exports.surfaceAreaCube = surfaceAreaCube;
+exports.surfaceAreaCylinder = surfaceAreaCylinder;
 exports.surfaceAreaSphere = surfaceAreaSphere;
 /* pi Not a pure module */
