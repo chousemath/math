@@ -7,6 +7,9 @@ export const areaSquare = M.areaSquare;
 export const areaTrapezoid = M.areaTrapezoid;
 export const areaTriangle = M.areaTriangle;
 
+export const perimeterRectangle = M.perimeterRectangle;
+export const perimeterSquare = M.perimeterSquare;
+
 export const removeNegatives = M.removeNegatives;
 export const removePositives = M.removePositives;
 

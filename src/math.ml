@@ -39,6 +39,18 @@ let areaTriangle base height =
     let safeHeight = safeValue height in
     0.5 *. safeBase *. safeHeight;;
 
+let perimeterRectangle length width =
+    let safeLength = safeValue length in
+    let safeWidth = safeValue width in
+    match (safeLength *. safeWidth) with
+      0.0 -> 0.0
+    | _ -> 2.0 *. safeLength +. 2.0 *. safeWidth
+    ;;
+
+let perimeterSquare side =
+    let safeSide = safeValue side in
+    4.0 *. safeSide;;
+
 let removeNegatives values =
     Js.Array.filter (fun x -> x > 0.0) values;;
 

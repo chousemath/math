@@ -52,6 +52,22 @@ function areaTriangle(base, height) {
   return 0.5 * safeBase * safeHeight;
 }
 
+function perimeterRectangle(length, width) {
+  var safeLength = safeValue(length);
+  var safeWidth = safeValue(width);
+  var match = safeLength * safeWidth;
+  if (match !== 0.0) {
+    return 2.0 * safeLength + 2.0 * safeWidth;
+  } else {
+    return 0.0;
+  }
+}
+
+function perimeterSquare(side) {
+  var safeSide = safeValue(side);
+  return 4.0 * safeSide;
+}
+
 function removeNegatives(values) {
   return values.filter((function (x) {
                 return x > 0.0;
@@ -88,6 +104,8 @@ exports.areaRectangle = areaRectangle;
 exports.areaSquare = areaSquare;
 exports.areaTrapezoid = areaTrapezoid;
 exports.areaTriangle = areaTriangle;
+exports.perimeterRectangle = perimeterRectangle;
+exports.perimeterSquare = perimeterSquare;
 exports.removeNegatives = removeNegatives;
 exports.removePositives = removePositives;
 exports.surfaceAreaCube = surfaceAreaCube;

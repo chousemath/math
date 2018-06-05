@@ -53,6 +53,22 @@ M.describe('Math', () => {
       A.equal(T.areaTriangle(9, 3), 13.5);
     });
   });
+  M.describe('#perimeterRectangle', () => {
+    M.it('should correctly calculate the perimeter of a rectangle', () => {
+      A.equal(T.perimeterRectangle(2, 3), 10.0);
+      A.equal(T.perimeterRectangle(0, 3), 0.0);
+      A.equal(T.perimeterRectangle(3, 0), 0.0);
+      A.equal(T.perimeterRectangle(-3, 3), 0.0);
+      A.equal(T.perimeterRectangle(3, -3), 0.0);
+    });
+  });
+  M.describe('#perimeterSquare', () => {
+    M.it('should correctly calculate the perimeter of a square', () => {
+      A.equal(T.perimeterSquare(10), 40.0);
+      A.equal(T.perimeterSquare(0), 0.0);
+      A.equal(T.perimeterSquare(-10), 0.0);
+    });
+  });
   M.describe('#removeNegatives', () => {
     M.it('should correctly replace all negative values with 0', () => {
       const result: Array<number> = T.removeNegatives([-3, -2, -1, 0, 1, 2, 3]);

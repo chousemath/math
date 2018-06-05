@@ -54,6 +54,22 @@ M.describe('Math', function () {
             A.equal(T.areaTriangle(9, 3), 13.5);
         });
     });
+    M.describe('#perimeterRectangle', function () {
+        M.it('should correctly calculate the perimeter of a rectangle', function () {
+            A.equal(T.perimeterRectangle(2, 3), 10.0);
+            A.equal(T.perimeterRectangle(0, 3), 0.0);
+            A.equal(T.perimeterRectangle(3, 0), 0.0);
+            A.equal(T.perimeterRectangle(-3, 3), 0.0);
+            A.equal(T.perimeterRectangle(3, -3), 0.0);
+        });
+    });
+    M.describe('#perimeterSquare', function () {
+        M.it('should correctly calculate the perimeter of a square', function () {
+            A.equal(T.perimeterSquare(10), 40.0);
+            A.equal(T.perimeterSquare(0), 0.0);
+            A.equal(T.perimeterSquare(-10), 0.0);
+        });
+    });
     M.describe('#removeNegatives', function () {
         M.it('should correctly replace all negative values with 0', function () {
             var result = T.removeNegatives([-3, -2, -1, 0, 1, 2, 3]);
