@@ -38,9 +38,8 @@ M.describe('Math', function () {
     });
     M.describe('#areaTrapezoid', function () {
         M.it('should correctly give you the area of a trapezoid', function () {
-            A.equal(T.areaTrapezoid(13, 100, 0), 0.0);
-            A.equal(T.areaTrapezoid(-100, 100, 10), 0.0);
-            A.equal(T.areaTrapezoid(100, -100, 2), 0.0);
+            A.equal(T.areaTrapezoid(-100, 100, 10), 500.0);
+            A.equal(T.areaTrapezoid(100, -100, 2), 100.0);
             A.equal(T.areaTrapezoid(100, 100, -22), 0.0);
             A.equal(T.areaTrapezoid(1, 2, 4), 6.0);
             A.equal(T.areaTrapezoid(3, 5, 2), 8.0);
@@ -57,10 +56,10 @@ M.describe('Math', function () {
     M.describe('#perimeterRectangle', function () {
         M.it('should correctly calculate the perimeter of a rectangle', function () {
             A.equal(T.perimeterRectangle(2, 3), 10.0);
-            A.equal(T.perimeterRectangle(0, 3), 0.0);
-            A.equal(T.perimeterRectangle(3, 0), 0.0);
-            A.equal(T.perimeterRectangle(-3, 3), 0.0);
-            A.equal(T.perimeterRectangle(3, -3), 0.0);
+            A.equal(T.perimeterRectangle(0, 3), 6.0);
+            A.equal(T.perimeterRectangle(3, 0), 6.0);
+            A.equal(T.perimeterRectangle(-3, 3), 6.0);
+            A.equal(T.perimeterRectangle(3, -3), 6.0);
         });
     });
     M.describe('#perimeterSquare', function () {

@@ -29,10 +29,7 @@ let areaTrapezoid base1 base2 height =
     let safeBase1 = safeValue base1 in
     let safeBase2 = safeValue base2 in
     let safeHeight = safeValue height in
-    match (safeBase1 *. safeBase2 *. safeHeight) with
-      0.0 -> 0.0
-    | _ -> 0.5 *. (safeBase1 +. safeBase2) *. safeHeight
-    ;;
+    0.5 *. (safeBase1 +. safeBase2) *. safeHeight;;
 
 let areaTriangle base height =
     let safeBase = safeValue base in
@@ -42,10 +39,7 @@ let areaTriangle base height =
 let perimeterRectangle length width =
     let safeLength = safeValue length in
     let safeWidth = safeValue width in
-    match (safeLength *. safeWidth) with
-      0.0 -> 0.0
-    | _ -> 2.0 *. safeLength +. 2.0 *. safeWidth
-    ;;
+    2.0 *. safeLength +. 2.0 *. safeWidth;;
 
 let perimeterSquare side =
     let safeSide = safeValue side in

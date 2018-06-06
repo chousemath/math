@@ -38,12 +38,7 @@ function areaTrapezoid(base1, base2, height) {
   var safeBase1 = safeValue(base1);
   var safeBase2 = safeValue(base2);
   var safeHeight = safeValue(height);
-  var match = safeBase1 * safeBase2 * safeHeight;
-  if (match !== 0.0) {
-    return 0.5 * (safeBase1 + safeBase2) * safeHeight;
-  } else {
-    return 0.0;
-  }
+  return 0.5 * (safeBase1 + safeBase2) * safeHeight;
 }
 
 function areaTriangle(base, height) {
@@ -55,12 +50,7 @@ function areaTriangle(base, height) {
 function perimeterRectangle(length, width) {
   var safeLength = safeValue(length);
   var safeWidth = safeValue(width);
-  var match = safeLength * safeWidth;
-  if (match !== 0.0) {
-    return 2.0 * safeLength + 2.0 * safeWidth;
-  } else {
-    return 0.0;
-  }
+  return 2.0 * safeLength + 2.0 * safeWidth;
 }
 
 function perimeterSquare(side) {
