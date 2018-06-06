@@ -9,6 +9,7 @@ exports.areaTrapezoid = M.areaTrapezoid;
 exports.areaTriangle = M.areaTriangle;
 exports.perimeterRectangle = M.perimeterRectangle;
 exports.perimeterSquare = M.perimeterSquare;
+exports.perimeterTriangle = M.perimeterTriangle;
 exports.removeNegatives = M.removeNegatives;
 exports.removePositives = M.removePositives;
 exports.surfaceAreaCube = M.surfaceAreaCube;

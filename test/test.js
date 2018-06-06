@@ -69,6 +69,14 @@ M.describe('Math', function () {
             A.equal(T.perimeterSquare(-10), 0.0);
         });
     });
+    M.describe('#perimeterTriange', function () {
+        M.it('should correctly calculate the perimeter of a triangle', function () {
+            A.equal(T.perimeterTriangle(1, 2, 3), 6);
+            A.equal(T.perimeterTriangle(11, 22, 33), 66);
+            A.equal(T.perimeterTriangle(-1, 2, 3), 3);
+            A.equal(T.perimeterTriangle(0, 22, 3), 22);
+        });
+    });
     M.describe('#removeNegatives', function () {
         M.it('should correctly replace all negative values with 0', function () {
             var result = T.removeNegatives([-3, -2, -1, 0, 1, 2, 3]);

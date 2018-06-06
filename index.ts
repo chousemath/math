@@ -9,6 +9,7 @@ export const areaTriangle = M.areaTriangle;
 
 export const perimeterRectangle = M.perimeterRectangle;
 export const perimeterSquare = M.perimeterSquare;
+export const perimeterTriangle = M.perimeterTriangle;
 
 export const removeNegatives = M.removeNegatives;
 export const removePositives = M.removePositives;

@@ -45,6 +45,12 @@ let perimeterSquare side =
     let safeSide = safeValue side in
     4.0 *. safeSide;;
 
+let perimeterTriangle side1 side2 side3 =
+    let mappedArray = Array.map (fun x -> safeValue x) [|side1;side2;side3|] in
+    match (Array.fold_left (fun x y -> x *. y) 1.0 mappedArray) with
+    | 0.0 -> Array.fold_left (fun x y -> if x > y then x else y) 0.0 mappedArray
+    | _ -> Array.fold_left (fun x y -> x +. y) 0.0 mappedArray
+
 let removeNegatives values =
     Js.Array.filter (fun x -> x > 0.0) values;;
 
