@@ -12,38 +12,29 @@ let areaCircle radius =
     pi *. safeRadius *. safeRadius;;
 
 let areaParallelogram base height =
-    let safeBase = safeValue base in
-    let safeHeight = safeValue height in
-    safeBase *. safeHeight;;
+    (safeValue base) *. (safeValue height);;
 
 let areaRectangle length width =
-    let safeLength = safeValue length in
-    let safeWidth = safeValue width in 
-    safeLength *. safeWidth;;
+    (safeValue length) *. (safeValue width);;
 
 let areaSquare side =
     let safeSide = safeValue side in
     safeSide *. safeSide;;
 
 let areaTrapezoid base1 base2 height =
-    let safeBase1 = safeValue base1 in
-    let safeBase2 = safeValue base2 in
-    let safeHeight = safeValue height in
-    0.5 *. (safeBase1 +. safeBase2) *. safeHeight;;
+    0.5 *. ((safeValue base1) +. (safeValue base2)) *. (safeValue height);;
 
 let areaTriangle base height =
-    let safeBase = safeValue base in
-    let safeHeight = safeValue height in
-    0.5 *. safeBase *. safeHeight;;
+    0.5 *. (safeValue base) *. (safeValue height);;
+
+let perimeterCircle radius =
+    2.0 *. pi *. (safeValue radius);;
 
 let perimeterRectangle length width =
-    let safeLength = safeValue length in
-    let safeWidth = safeValue width in
-    2.0 *. safeLength +. 2.0 *. safeWidth;;
+    2.0 *. (safeValue length) +. 2.0 *. (safeValue width);;
 
 let perimeterSquare side =
-    let safeSide = safeValue side in
-    4.0 *. safeSide;;
+    4.0 *. (safeValue side);;
 
 let perimeterTriangle side1 side2 side3 =
     let mappedArray = Array.map (fun x -> safeValue x) [|side1;side2;side3|] in
@@ -62,10 +53,12 @@ let surfaceAreaCube side =
     6.0 *. safeSide *. safeSide;;
 
 let surfaceAreaCylinder radius height =
-    let safeRadius = safeValue radius in
-    let safeHeight = safeValue height in
-    2.0 *. pi *. safeRadius *. safeHeight;;
+    2.0 *. pi *. (safeValue radius) *. (safeValue height);;
 
 let surfaceAreaSphere radius =
     let safeRadius = safeValue radius in
     4.0 *. pi *. safeRadius *. safeRadius;;
+
+let volumeCube side =
+    let safeSide = safeValue side in
+    safeSide *. safeSide *. safeSide;;

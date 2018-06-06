@@ -19,15 +19,11 @@ function areaCircle(radius) {
 }
 
 function areaParallelogram(base, height) {
-  var safeBase = safeValue(base);
-  var safeHeight = safeValue(height);
-  return safeBase * safeHeight;
+  return safeValue(base) * safeValue(height);
 }
 
 function areaRectangle(length, width) {
-  var safeLength = safeValue(length);
-  var safeWidth = safeValue(width);
-  return safeLength * safeWidth;
+  return safeValue(length) * safeValue(width);
 }
 
 function areaSquare(side) {
@@ -36,27 +32,23 @@ function areaSquare(side) {
 }
 
 function areaTrapezoid(base1, base2, height) {
-  var safeBase1 = safeValue(base1);
-  var safeBase2 = safeValue(base2);
-  var safeHeight = safeValue(height);
-  return 0.5 * (safeBase1 + safeBase2) * safeHeight;
+  return 0.5 * (safeValue(base1) + safeValue(base2)) * safeValue(height);
 }
 
 function areaTriangle(base, height) {
-  var safeBase = safeValue(base);
-  var safeHeight = safeValue(height);
-  return 0.5 * safeBase * safeHeight;
+  return 0.5 * safeValue(base) * safeValue(height);
+}
+
+function perimeterCircle(radius) {
+  return 2.0 * pi * safeValue(radius);
 }
 
 function perimeterRectangle(length, width) {
-  var safeLength = safeValue(length);
-  var safeWidth = safeValue(width);
-  return 2.0 * safeLength + 2.0 * safeWidth;
+  return 2.0 * safeValue(length) + 2.0 * safeValue(width);
 }
 
 function perimeterSquare(side) {
-  var safeSide = safeValue(side);
-  return 4.0 * safeSide;
+  return 4.0 * safeValue(side);
 }
 
 function perimeterTriangle(side1, side2, side3) {
@@ -101,14 +93,17 @@ function surfaceAreaCube(side) {
 }
 
 function surfaceAreaCylinder(radius, height) {
-  var safeRadius = safeValue(radius);
-  var safeHeight = safeValue(height);
-  return 2.0 * pi * safeRadius * safeHeight;
+  return 2.0 * pi * safeValue(radius) * safeValue(height);
 }
 
 function surfaceAreaSphere(radius) {
   var safeRadius = safeValue(radius);
   return 4.0 * pi * safeRadius * safeRadius;
+}
+
+function volumeCube(side) {
+  var safeSide = safeValue(side);
+  return safeSide * safeSide * safeSide;
 }
 
 exports.pi = pi;
@@ -119,6 +114,7 @@ exports.areaRectangle = areaRectangle;
 exports.areaSquare = areaSquare;
 exports.areaTrapezoid = areaTrapezoid;
 exports.areaTriangle = areaTriangle;
+exports.perimeterCircle = perimeterCircle;
 exports.perimeterRectangle = perimeterRectangle;
 exports.perimeterSquare = perimeterSquare;
 exports.perimeterTriangle = perimeterTriangle;
@@ -127,4 +123,5 @@ exports.removePositives = removePositives;
 exports.surfaceAreaCube = surfaceAreaCube;
 exports.surfaceAreaCylinder = surfaceAreaCylinder;
 exports.surfaceAreaSphere = surfaceAreaSphere;
+exports.volumeCube = volumeCube;
 /* pi Not a pure module */

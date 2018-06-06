@@ -52,6 +52,15 @@ M.describe('Math', () => {
       A.equal(T.areaTriangle(9, 3), 13.5);
     });
   });
+  M.describe('#perimeterCircle', () => {
+    M.it('should correctly calculate the perimeter of a circle', () => {
+      A.equal(Math.round(T.perimeterCircle(2) * 1000.0) / 1000.0, 12.566);
+      A.equal(Math.round(T.perimeterCircle(3) * 1000.0) / 1000.0, 18.850);
+      A.equal(Math.round(T.perimeterCircle(0) * 1000.0) / 1000.0, 0.0);
+      A.equal(Math.round(T.perimeterCircle(-10) * 1000.0) / 1000.0, 0.0);
+      A.equal(Math.round(T.perimeterCircle(32) * 1000.0) / 1000.0, 201.062);
+    });
+  });
   M.describe('#perimeterRectangle', () => {
     M.it('should correctly calculate the perimeter of a rectangle', () => {
       A.equal(T.perimeterRectangle(2, 3), 10.0);
@@ -116,6 +125,14 @@ M.describe('Math', () => {
       A.equal(T.surfaceAreaSphere(-1000), 0.0);
       A.equal(Math.round(T.surfaceAreaSphere(10) * 1000.0) / 1000.0, 1256.637);
       A.equal(Math.round(T.surfaceAreaSphere(23) * 1000.0) / 1000.0, 6647.610);
+    });
+  });
+  M.describe('#volumeCube', () => {
+    M.it('should correctly calculate the volume of a cube', () => {
+      A.equal(T.volumeCube(12), 1728.0);
+      A.equal(Math.round(T.volumeCube(321.123) * 1000.0) / 1000.0, 33114197.700);
+      A.equal(T.volumeCube(0), 0.0);
+      A.equal(T.volumeCube(-10), 0.0);
     });
   });
 });

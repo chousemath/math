@@ -7,6 +7,7 @@ export const areaSquare = M.areaSquare;
 export const areaTrapezoid = M.areaTrapezoid;
 export const areaTriangle = M.areaTriangle;
 
+export const perimeterCircle = M.perimeterCircle;
 export const perimeterRectangle = M.perimeterRectangle;
 export const perimeterSquare = M.perimeterSquare;
 export const perimeterTriangle = M.perimeterTriangle;
@@ -17,3 +18,5 @@ export const removePositives = M.removePositives;
 export const surfaceAreaCube = M.surfaceAreaCube;
 export const surfaceAreaCylinder = M.surfaceAreaCylinder;
 export const surfaceAreaSphere = M.surfaceAreaSphere;
+
+export const volumeCube = M.volumeCube;
