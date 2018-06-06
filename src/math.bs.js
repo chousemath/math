@@ -5,7 +5,7 @@ var $$Array = require("bs-platform/lib/js/array.js");
 
 var pi = 4.0 * Math.atan(1.0);
 
-function safeValue(value) {
+function safe(value) {
   if (value < 0.0) {
     return 0.0;
   } else {
@@ -13,53 +13,81 @@ function safeValue(value) {
   }
 }
 
-function areaCircle(radius) {
-  var safeRadius = safeValue(radius);
-  return pi * safeRadius * safeRadius;
+function mult(x, y) {
+  return x * y;
 }
 
-function areaParallelogram(base, height) {
-  return safeValue(base) * safeValue(height);
+function areaCircle(r) {
+  return $$Array.fold_left(mult, pi, $$Array.map(safe, /* array */[
+                  r,
+                  r
+                ]));
 }
 
-function areaRectangle(length, width) {
-  return safeValue(length) * safeValue(width);
+function areaParallelogram(b, h) {
+  return $$Array.fold_left(mult, 1.0, $$Array.map(safe, /* array */[
+                  b,
+                  h
+                ]));
 }
 
-function areaSquare(side) {
-  var safeSide = safeValue(side);
-  return safeSide * safeSide;
+function areaRectangle(len, w) {
+  return $$Array.fold_left(mult, 1.0, $$Array.map(safe, /* array */[
+                  len,
+                  w
+                ]));
 }
 
-function areaTrapezoid(base1, base2, height) {
-  return 0.5 * (safeValue(base1) + safeValue(base2)) * safeValue(height);
+function areaSquare(s) {
+  return $$Array.fold_left(mult, 1.0, $$Array.map(safe, /* array */[
+                  s,
+                  s
+                ]));
 }
 
-function areaTriangle(base, height) {
-  return 0.5 * safeValue(base) * safeValue(height);
+function areaTrapezoid(b1, b2, h) {
+  return 0.5 * (safe(b1) + safe(b2)) * safe(h);
 }
 
-function perimeterCircle(radius) {
-  return 2.0 * pi * safeValue(radius);
+function areaTriangle(b, h) {
+  return $$Array.fold_left(mult, 0.5, $$Array.map(safe, /* array */[
+                  b,
+                  h
+                ]));
 }
 
-function perimeterRectangle(length, width) {
-  return 2.0 * safeValue(length) + 2.0 * safeValue(width);
+function distanceTwoPoints(x1, y1, x2, y2) {
+  var xdiff = x2 - x1;
+  var ydiff = y2 - y1;
+  return Math.sqrt(xdiff * xdiff + ydiff * ydiff);
 }
 
-function perimeterSquare(side) {
-  return 4.0 * safeValue(side);
+function perimeterCircle(r) {
+  return 2.0 * pi * safe(r);
 }
 
-function perimeterTriangle(side1, side2, side3) {
-  var mappedArray = $$Array.map(safeValue, /* array */[
-        side1,
-        side2,
-        side3
+function perimeterRectangle(len, w) {
+  return $$Array.fold_left((function (x, y) {
+                return x + y;
+              }), 0.0, $$Array.map((function (x) {
+                    return 2.0 * safe(x);
+                  }), /* array */[
+                  len,
+                  w
+                ]));
+}
+
+function perimeterSquare(s) {
+  return 4.0 * safe(s);
+}
+
+function perimeterTriangle(s1, s2, s3) {
+  var mappedArray = $$Array.map(safe, /* array */[
+        s1,
+        s2,
+        s3
       ]);
-  var match = $$Array.fold_left((function (x, y) {
-          return x * y;
-        }), 1.0, mappedArray);
+  var match = $$Array.fold_left(mult, 1.0, mappedArray);
   if (match !== 0.0) {
     return $$Array.fold_left((function (x, y) {
                   return x + y;
@@ -87,41 +115,112 @@ function removePositives(values) {
               }));
 }
 
-function surfaceAreaCube(side) {
-  var safeSide = safeValue(side);
-  return 6.0 * safeSide * safeSide;
+function slope(x1, y1, x2, y2) {
+  return (y2 - y1) / (x2 - x1);
 }
 
-function surfaceAreaCylinder(radius, height) {
-  return 2.0 * pi * safeValue(radius) * safeValue(height);
+function surfaceAreaCube(s) {
+  return $$Array.fold_left(mult, 6.0, $$Array.map(safe, /* array */[
+                  s,
+                  s
+                ]));
 }
 
-function surfaceAreaSphere(radius) {
-  var safeRadius = safeValue(radius);
-  return 4.0 * pi * safeRadius * safeRadius;
+function surfaceAreaCylinder(r, h) {
+  return $$Array.fold_left(mult, 2.0 * pi, $$Array.map(safe, /* array */[
+                  r,
+                  h
+                ]));
 }
 
-function volumeCube(side) {
-  var safeSide = safeValue(side);
-  return safeSide * safeSide * safeSide;
+function surfaceAreaSphere(r) {
+  return $$Array.fold_left(mult, 4.0 * pi, $$Array.map(safe, /* array */[
+                  r,
+                  r
+                ]));
+}
+
+function volumeCone(r, h) {
+  return $$Array.fold_left(mult, pi / 3.0, $$Array.map(safe, /* array */[
+                  r,
+                  r,
+                  h
+                ]));
+}
+
+function volumeCube(s) {
+  return $$Array.fold_left(mult, 1.0, $$Array.map(safe, /* array */[
+                  s,
+                  s,
+                  s
+                ]));
+}
+
+function volumeCylinder(r, h) {
+  return $$Array.fold_left(mult, pi, $$Array.map(safe, /* array */[
+                  r,
+                  r,
+                  h
+                ]));
+}
+
+function volumeRectangularContainer(len, w, h) {
+  return $$Array.fold_left(mult, 1.0, $$Array.map(safe, /* array */[
+                  len,
+                  w,
+                  h
+                ]));
+}
+
+function volumeRightCircularCylinder(r, h) {
+  return $$Array.fold_left(mult, pi, $$Array.map(safe, /* array */[
+                  r,
+                  r,
+                  h
+                ]));
+}
+
+function volumeSquarePyramid(b, h) {
+  return $$Array.fold_left(mult, 1.0 / 3.0, $$Array.map(safe, /* array */[
+                  b,
+                  b,
+                  h
+                ]));
+}
+
+function volumeSphere(r) {
+  return $$Array.fold_left(mult, 4.0 * pi / 3.0, $$Array.map(safe, /* array */[
+                  r,
+                  r,
+                  r
+                ]));
 }
 
 exports.pi = pi;
-exports.safeValue = safeValue;
+exports.safe = safe;
+exports.mult = mult;
 exports.areaCircle = areaCircle;
 exports.areaParallelogram = areaParallelogram;
 exports.areaRectangle = areaRectangle;
 exports.areaSquare = areaSquare;
 exports.areaTrapezoid = areaTrapezoid;
 exports.areaTriangle = areaTriangle;
+exports.distanceTwoPoints = distanceTwoPoints;
 exports.perimeterCircle = perimeterCircle;
 exports.perimeterRectangle = perimeterRectangle;
 exports.perimeterSquare = perimeterSquare;
 exports.perimeterTriangle = perimeterTriangle;
 exports.removeNegatives = removeNegatives;
 exports.removePositives = removePositives;
+exports.slope = slope;
 exports.surfaceAreaCube = surfaceAreaCube;
 exports.surfaceAreaCylinder = surfaceAreaCylinder;
 exports.surfaceAreaSphere = surfaceAreaSphere;
+exports.volumeCone = volumeCone;
 exports.volumeCube = volumeCube;
+exports.volumeCylinder = volumeCylinder;
+exports.volumeRectangularContainer = volumeRectangularContainer;
+exports.volumeRightCircularCylinder = volumeRightCircularCylinder;
+exports.volumeSquarePyramid = volumeSquarePyramid;
+exports.volumeSphere = volumeSphere;
 /* pi Not a pure module */

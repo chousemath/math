@@ -53,6 +53,13 @@ M.describe('Math', function () {
             A.equal(T.areaTriangle(9, 3), 13.5);
         });
     });
+    M.describe('#distanceTwoPoints', function () {
+        M.it('should correctly calculate the distance between two points', function () {
+            A.equal(Math.round(T.distanceTwoPoints(1, 2, 3, 4) * 1000.0) / 1000.0, 2.828);
+            A.equal(Math.round(T.distanceTwoPoints(-11, 23.3, 32.1, -44.1) * 1000.0) / 1000.0, 80.002);
+            A.equal(Math.round(T.distanceTwoPoints(0, 23.3, 32.1, 0) * 1000.0) / 1000.0, 39.665);
+        });
+    });
     M.describe('#perimeterCircle', function () {
         M.it('should correctly calculate the perimeter of a circle', function () {
             A.equal(Math.round(T.perimeterCircle(2) * 1000.0) / 1000.0, 12.566);
@@ -104,6 +111,12 @@ M.describe('Math', function () {
             A.equal(result[2], -1.0);
         });
     });
+    M.describe('#slope', function () {
+        M.it('should calculate the slope of the line between two points', function () {
+            A.equal(T.slope(1, 2, 3, 4), 1.0);
+            A.equal(Math.round(T.slope(-22, 123, 99, -170.2) * 1000.0) / 1000.0, -2.423);
+        });
+    });
     M.describe('#surfaceAreaCube', function () {
         M.it('should correctly give you the surface area of a cube', function () {
             A.equal(T.surfaceAreaCube(0), 0.0);
@@ -128,12 +141,60 @@ M.describe('Math', function () {
             A.equal(Math.round(T.surfaceAreaSphere(23) * 1000.0) / 1000.0, 6647.610);
         });
     });
+    M.describe('#volumeCone', function () {
+        M.it('should correctly calculate the volume of a cone', function () {
+            A.equal(Math.round(T.volumeCone(12, 13) * 1000.0) / 1000.0, 1960.354);
+            A.equal(Math.round(T.volumeCone(321.123, 23.33) * 1000.0) / 1000.0, 2519336.517);
+            A.equal(T.volumeCone(0, 22), 0.0);
+            A.equal(T.volumeCone(-10, 44), 0.0);
+        });
+    });
     M.describe('#volumeCube', function () {
         M.it('should correctly calculate the volume of a cube', function () {
             A.equal(T.volumeCube(12), 1728.0);
             A.equal(Math.round(T.volumeCube(321.123) * 1000.0) / 1000.0, 33114197.700);
             A.equal(T.volumeCube(0), 0.0);
             A.equal(T.volumeCube(-10), 0.0);
+        });
+    });
+    M.describe('#volumeCylinder', function () {
+        M.it('should correctly calculate the volume of a cylinder', function () {
+            A.equal(Math.round(T.volumeCylinder(12, 13) * 1000.0) / 1000.0, 5881.061);
+            A.equal(Math.round(T.volumeCylinder(321.123, 22.33) * 1000.0) / 1000.0, 7234048.575);
+            A.equal(T.volumeCylinder(0, 2), 0.0);
+            A.equal(T.volumeCylinder(-10, 3), 0.0);
+        });
+    });
+    M.describe('#volumeRectangularContainer', function () {
+        M.it('should correctly calculate the volume of a rectangular container', function () {
+            A.equal(T.volumeRectangularContainer(12, 11, 33), 4356.0);
+            A.equal(Math.round(T.volumeRectangularContainer(12.22, 11.11, 33.33) * 1000.0) / 1000.0, 4525.021);
+            A.equal(T.volumeRectangularContainer(0, 1, 2), 0.0);
+            A.equal(T.volumeRectangularContainer(-10, 2, 3), 0.0);
+        });
+    });
+    M.describe('#volumeRightCircularCylinder', function () {
+        M.it('should correctly calculate the volume of a circular cylinder', function () {
+            A.equal(Math.round(T.volumeRightCircularCylinder(11.11, 33.33) * 1000.0) / 1000.0, 12924.487);
+            A.equal(Math.round(T.volumeRightCircularCylinder(12.22, 11.11) * 1000.0) / 1000.0, 5212.023);
+            A.equal(T.volumeRightCircularCylinder(0, 1), 0.0);
+            A.equal(T.volumeRightCircularCylinder(-10, 2), 0.0);
+        });
+    });
+    M.describe('#volumeSquarePyramid', function () {
+        M.it('should correctly calculate the volume of a square pyramid', function () {
+            A.equal(T.volumeSquarePyramid(12, 11), 528.0);
+            A.equal(Math.round(T.volumeSquarePyramid(12.22, 11.11) * 1000.0) / 1000.0, 553.013);
+            A.equal(T.volumeSquarePyramid(0, 1), 0.0);
+            A.equal(T.volumeSquarePyramid(-10, 2), 0.0);
+        });
+    });
+    M.describe('#volumeSphere', function () {
+        M.it('should correctly calculate the volume of a sphere', function () {
+            A.equal(Math.round(T.volumeSphere(123.321) * 1000.0) / 1000.0, 7855968.303);
+            A.equal(Math.round(T.volumeSphere(11.11) * 1000.0) / 1000.0, 5744.216);
+            A.equal(T.volumeSphere(0), 0.0);
+            A.equal(T.volumeSphere(-10), 0.0);
         });
     });
 });

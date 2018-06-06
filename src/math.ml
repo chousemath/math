@@ -4,41 +4,51 @@ let pi = 4.0 *. atan 1.0;;
 
 (* Defining Functions *)
 
-let safeValue value =
+let safe value =
     if value < 0.0 then 0.0 else value;;
 
-let areaCircle radius =
-    let safeRadius = safeValue radius in
-    pi *. safeRadius *. safeRadius;;
+let mult x y = x *. y;;
 
-let areaParallelogram base height =
-    (safeValue base) *. (safeValue height);;
+(* $$Area = \pi \times Radius^2$$ *)
+let areaCircle r =
+    Array.fold_left mult pi (Array.map safe [|r;r|]);;
 
-let areaRectangle length width =
-    (safeValue length) *. (safeValue width);;
+(* $$Area = Base \times Height$$ *)
+let areaParallelogram b h =
+    Array.fold_left mult 1.0 (Array.map safe [|b;h|]);;
 
-let areaSquare side =
-    let safeSide = safeValue side in
-    safeSide *. safeSide;;
+(* $$Area = Length \times Width$$ *)
+let areaRectangle len w =
+    Array.fold_left mult 1.0 (Array.map safe [|len;w|]);;
 
-let areaTrapezoid base1 base2 height =
-    0.5 *. ((safeValue base1) +. (safeValue base2)) *. (safeValue height);;
+(* $$Area = Side^2$$ *)
+let areaSquare s =
+    Array.fold_left mult 1.0 (Array.map safe [|s;s|]);;
 
-let areaTriangle base height =
-    0.5 *. (safeValue base) *. (safeValue height);;
+let areaTrapezoid b1 b2 h =
+    0.5 *. ((safe b1) +. (safe b2)) *. (safe h);;
 
-let perimeterCircle radius =
-    2.0 *. pi *. (safeValue radius);;
+(* $$Area = {1 \over 2} \times Base \times Height$$ *)
+let areaTriangle b h =
+    Array.fold_left mult 0.5 (Array.map safe [|b;h|]);;
 
-let perimeterRectangle length width =
-    2.0 *. (safeValue length) +. 2.0 *. (safeValue width);;
+let distanceTwoPoints x1 y1 x2 y2 =
+    let xdiff = x2 -. x1 in
+    let ydiff = y2 -. y1 in
+    Js.Math.sqrt (xdiff *. xdiff +. ydiff *. ydiff);;
 
-let perimeterSquare side =
-    4.0 *. (safeValue side);;
+let perimeterCircle r =
+    2.0 *. pi *. (safe r);;
 
-let perimeterTriangle side1 side2 side3 =
-    let mappedArray = Array.map (fun x -> safeValue x) [|side1;side2;side3|] in
-    match (Array.fold_left (fun x y -> x *. y) 1.0 mappedArray) with
+let perimeterRectangle len w =
+    Array.fold_left (fun x y -> x +. y) 0.0 (Array.map (fun x -> 2.0 *. (safe x)) [|len;w|]);;
+
+let perimeterSquare s =
+    4.0 *. (safe s);;
+
+let perimeterTriangle s1 s2 s3 =
+    let mappedArray = Array.map safe [|s1;s2;s3|] in
+    match (Array.fold_left mult 1.0 mappedArray) with
     | 0.0 -> Array.fold_left (fun x y -> if x > y then x else y) 0.0 mappedArray
     | _ -> Array.fold_left (fun x y -> x +. y) 0.0 mappedArray
 
@@ -48,17 +58,34 @@ let removeNegatives values =
 let removePositives values =
     Js.Array.filter (fun x -> x < 0.0) values;;
 
-let surfaceAreaCube side =
-    let safeSide = safeValue side in
-    6.0 *. safeSide *. safeSide;;
+let slope x1 y1 x2 y2 = (y2 -. y1) /. (x2 -. x1);;
 
-let surfaceAreaCylinder radius height =
-    2.0 *. pi *. (safeValue radius) *. (safeValue height);;
+let surfaceAreaCube s =
+    Array.fold_left mult 6.0 (Array.map safe [|s;s|]);;
 
-let surfaceAreaSphere radius =
-    let safeRadius = safeValue radius in
-    4.0 *. pi *. safeRadius *. safeRadius;;
+let surfaceAreaCylinder r h =
+    Array.fold_left mult (2.0 *. pi) (Array.map safe [|r;h|]);;
 
-let volumeCube side =
-    let safeSide = safeValue side in
-    safeSide *. safeSide *. safeSide;;
+let surfaceAreaSphere r =
+    Array.fold_left mult (4.0 *. pi) (Array.map safe [|r;r|]);;
+
+let volumeCone r h =
+    Array.fold_left mult (pi /. 3.0) (Array.map safe [|r;r;h|]);;
+
+let volumeCube s =
+    Array.fold_left mult 1.0 (Array.map safe [|s;s;s|]);;
+
+let volumeCylinder r h =
+    Array.fold_left mult pi (Array.map safe [|r;r;h|]);;
+
+let volumeRectangularContainer len w h =
+    Array.fold_left mult 1.0 (Array.map safe [|len;w;h|]);;
+
+let volumeRightCircularCylinder r h =
+    Array.fold_left mult pi (Array.map safe [|r;r;h|]);;
+
+let volumeSquarePyramid b h =
+    Array.fold_left mult (1.0 /. 3.0) (Array.map safe [|b;b;h|]);;
+
+let volumeSphere r =
+    Array.fold_left mult (4.0 *. pi /. 3.0) (Array.map safe [|r;r;r|]);;
