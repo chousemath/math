@@ -2,6 +2,7 @@
   "name": "basicmathfunc",
   "version": "0.1.0",
   "scripts": {
+    "start": "node app.js",
     "clean": "bsb -clean-world",
     "build": "bsb -make-world",
     "watch": "bsb -make-world -w",
