@@ -16,10 +16,6 @@
   ],
   "author": "Joseph Sungpil Choi",
   "license": "ISC",
-  "devDependencies": {
-    "assert": "^1.4.1",
-    "mocha": "^5.2.0"
-  },
   "description": "A set of library functions for a math tutorial site",
   "main": "index.js",
   "directories": {
@@ -27,7 +23,6 @@
   },
   "dependencies": {
     "body-parser": "^1.18.3",
-    "express": "^4.16.3",
-    "bs-platform": "^3.1.4"
+    "express": "^4.16.3"
   }
 }
