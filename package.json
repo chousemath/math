@@ -26,8 +26,6 @@
     "lib": "lib"
   },
   "dependencies": {
-    "body-parser": "^1.18.3",
-    "bs-platform": "^3.1.5",
-    "express": "^4.16.3"
+    "bs-platform": "^3.1.5"
   }
 }
